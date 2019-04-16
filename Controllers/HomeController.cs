@@ -68,6 +68,10 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult AddStudent(Students stu)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(stu);
+            }
             stu.Id = Guid.NewGuid().ToString();
             stus.Add(stu);
             SaveCache();
